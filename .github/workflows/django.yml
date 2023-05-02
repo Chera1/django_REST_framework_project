@@ -31,4 +31,5 @@ jobs:
         $POETRY_HOME/bin/poetry install
     - name: Run Tests
       run: |
-        poetry run python manage.py test
+        export POETRY_HOME=/opt/poetry
+        $POETRY_HOME/bin/poetry run python manage.py test
