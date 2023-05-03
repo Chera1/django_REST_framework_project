@@ -1,6 +1,7 @@
+# 1 method of serializer
 from rest_framework import serializers
 
-from drf_app.models import Film, Actor, ActorFilmWork
+from drf_app.models import Film, Actor
 
 
 class ActorSerializer(serializers.Serializer):
@@ -20,7 +21,6 @@ class ActorSerializer(serializers.Serializer):
 class FilmSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=255)
     type = serializers.CharField(max_length=100)
-    # actors = ActorSerializer(many=True, default=True)
 
     def create(self, validated_data):
         return Film.objects.create(name=validated_data['name'], type=validated_data['type'])
@@ -32,7 +32,7 @@ class FilmSerializer(serializers.Serializer):
         return instance
 
 
-class ActorFilmWorkSerializer(serializers.Serializer):
-    films = FilmSerializer()
-    actor = ActorSerializer()
-    role = serializers.CharField(max_length=255, allow_null=True)
+# class ActorFilmWorkSerializer(serializers.Serializer):
+#     films = FilmSerializer()
+#     actor = ActorSerializer()
+#     role = serializers.CharField(max_length=255, allow_null=True)
