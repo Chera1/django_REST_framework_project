@@ -19,6 +19,7 @@ class TypeRole(models.TextChoices):
 class Film(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     type = models.CharField(verbose_name='type', choices=TypeFilm.choices, max_length=100)
+    actors = models.ManyToManyField('Actor', through='ActorFilmWork')
 
     class Meta:
         # Следующие два поля отвечают за название модели в интерфейсе
