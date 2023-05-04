@@ -11,6 +11,8 @@ class ActorSerializer(serializers.ModelSerializer):
 
 
 class FilmSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Film
         fields = "__all__"
