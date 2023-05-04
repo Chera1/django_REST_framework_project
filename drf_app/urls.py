@@ -1,12 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 
-from . import views
+from . import views_2
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'films', views_2.FilmViewSet)
+router.register(r'actors', views_2.ActorViewSet)
 
 urlpatterns = [
-    path('api/films/', views.FilmAPIList.as_view()),
-    path('api/actors/', views.ActorAPIList.as_view()),
-    path('api/films/<int:pk>', views.FilmAPIUpdate.as_view()),
-    path('api/filmsdetail/<int:pk>', views.FilmAPIDetailView.as_view()),
-    path('api/actorsdetail/<int:pk>', views.ActorAPIDetailView.as_view()),
-    path('api/actors/<int:pk>', views.ActorAPIUpdate.as_view()),
+    path('api/', include(router.urls)),  # http://127.0.0.1:8000/api/v1/(films/actors)/
 ]
