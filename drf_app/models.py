@@ -1,4 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+User = get_user_model()
 
 
 class TypeFilm(models.TextChoices):
@@ -20,6 +23,7 @@ class Film(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     type = models.CharField(verbose_name='type', choices=TypeFilm.choices, max_length=100)
     actors = models.ManyToManyField('Actor', through='ActorFilmWork')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
     class Meta:
         # Следующие два поля отвечают за название модели в интерфейсе
