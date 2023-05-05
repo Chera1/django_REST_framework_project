@@ -16,7 +16,7 @@ class FilmAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Film.objects.all()
     serializer_class = FilmSerializer
     permission_classes = (IsAuthenticated,)
-    authentication_classes = (TokenAuthentication, )  # авторизация исключительно по токену
+    # authentication_classes = (TokenAuthentication, )  # авторизация исключительно по токену
 
 
 class FilmAPIDelete(generics.RetrieveDestroyAPIView):
@@ -35,7 +35,7 @@ class ActorAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
     permission_classes = (IsAuthenticated, )
-    authentication_classes = (TokenAuthentication,)  # авторизация исключительно по токену
+    # authentication_classes = (TokenAuthentication,)  # авторизация исключительно по токену
 
 
 class ActorAPIDelete(generics.RetrieveDestroyAPIView):
